@@ -10,18 +10,18 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
-public class WordCount {
+public class Transform {
   public static void main(String[] args) throws Exception {
     Configuration conf = new Configuration();
 
-    Job job = new Job(conf, "wordcount");
-    job.setJarByClass(WordCount.class);
+    Job job = new Job(conf, "Transform");
+    job.setJarByClass(Transform.class);
 
     job.setOutputKeyClass(Text.class);
     job.setOutputValueClass(IntWritable.class);
 
-    job.setMapperClass(WordCountMapper.class);
-    job.setReducerClass(WordCountReducer.class);
+    job.setMapperClass(TransformMapper.class);
+    job.setReducerClass(TransformReducer.class);
 
     job.setInputFormatClass(TextInputFormat.class);
     job.setOutputFormatClass(TextOutputFormat.class);
